@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TN-Variable Name Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .variable-status {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Variable Names and Their Status</h1>
+    <div id="variable-status">
+      
+    </div>
+
+    <script>
+       
+        const legalVariables = [
+            { name: 'myVariable', status: 'Legal' },
+            { name: '_variableName', status: 'Legal' },
+            { name: '$variableName', status: 'Legal' },
+            { name: 'variable1', status: 'Legal' },
+            { name: 'variable_name', status: 'Legal' }
+        ];
+        
+        
+        const illegalVariables = [
+            { name: '1variable', status: 'Illegal (Cannot start with a number)' },
+            { name: 'my-variable', status: 'Illegal (Cannot contain hyphens)' },
+            { name: 'var', status: 'Illegal (Reserved keyword)' },
+            { name: 'variable name', status: 'Illegal (Cannot contain spaces)' },
+            { name: '@variable', status: 'Illegal (Cannot start with special characters other than $ and _)' }
+        ];
+
+        function displayVariableStatus() {
+            const container = document.getElementById('variable-status');
+            container.innerHTML = '<h2>Legal Variable Names:</h2>';
+            
+            legalVariables.forEach(variable => {
+                container.innerHTML += `<div class="variable-status">${variable.name} is a <strong>${variable.status}</strong></div>`;
+            });
+
+            container.innerHTML += '<h2>Illegal Variable Names:</h2>';
+            
+            illegalVariables.forEach(variable => {
+                container.innerHTML += `<div class="variable-status">${variable.name} is <strong>${variable.status}</strong></div>`;
+            });
+        }
+
+        
+        displayVariableStatus();
+    </script>
+</body>
+</html>
